@@ -25,9 +25,6 @@ String responseHTML = "<!DOCTYPE html>"
   
 
 void setup() {
-  // turn the LED on (HIGH is the voltage level)
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, HIGH);
 
   // configure access point
   WiFi.mode(WIFI_AP);
