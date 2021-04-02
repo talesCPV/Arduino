@@ -1,3 +1,6 @@
+
+const char indexHTML[] PROGMEM = R"rawliteral(
+
 <!DOCTYPE HTML><html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -207,6 +210,7 @@
         <div class="form-inner">
           <form action="/" class="login">
             <div class="field">
+               <p id="lblFrase">Digite sua frase aqui:</p>
                <input type="text" name= "edtFrase" id="edtFrase" placeholder="Frase" onkeyup="return perm_char(this)" required>
             </div>
             <div class="field">
@@ -214,7 +218,7 @@
               <input type="range" class="range" id="cmbVel" name="cmbVel" min="1" max="50">
             </div>
             <div class="field">
-              <label> Espaços entre Ciclos <span id="spnEsp"> 2</span></label>
+              <label> Espacos entre Ciclos <span id="spnEsp"> 2</span></label>
               <input type="range" class="range" id="cmbEsp" name="cmbEsp" min="0" max="20">
             </div>
             <div class="field btn" id="btnLogin">
@@ -247,7 +251,6 @@
   
 </body>
 <script>
-
     
     const signinText = document.querySelector(".title-text .login");
     const signinForm = document.querySelector("form.login");
@@ -267,7 +270,7 @@
     const spnVel = document.querySelector("#spnVel");
     const spnEsp = document.querySelector("#spnEsp");
 
-
+    getFrase()
 
     signupBtn.onclick = (()=>{
       signinForm.style.marginLeft = "-50%";
@@ -292,7 +295,16 @@
       spnEsp.innerHTML = cmbEsp.value;
     });
 
-
+function getFrase(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        edtFrase.value = this.responseText;
+      }
+    };
+    xhttp.open("GET", "/frase", true);
+    xhttp.send();
+}
 
 function perm_char(campo){
     const ok_chr = ['1','2','3','4','5','6','7','8','9','0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','\'','!','@','#','$','%','&','*','(',')','<','>',',','.',';',':','?','/','-','+','=','_'];
@@ -312,3 +324,5 @@ function perm_char(campo){
 
 </script>
 </html>
+
+)rawliteral";

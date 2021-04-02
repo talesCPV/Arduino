@@ -4,7 +4,7 @@ void setup() {
 //  gravar(0x21,"Tales C. Dantas");
 //  gravar(0x02,"MinhaRede");
 //  gravar(0x11,"12345678");
-//  gravar_valor(0,0x02); // grava 2 no BLANK 0
+//  gravar_valor(0x00,0x00); // grava 0 no BLANK 0
 //  gravar_valor(1,10); // grava 10 no SCROLL_SPEED (x 10) = 100ms
 
   frase = ler(0x21);
@@ -76,9 +76,11 @@ void setup() {
       gravar(0x11,value);
     }    
   });
-  server.on("/texto", HTTP_GET, [](){
+  
+  server.on("/frase", HTTP_GET, [](){
     server.send(200, "text/plain", String(frase).c_str());
   });
+
 
   server.begin();
 }

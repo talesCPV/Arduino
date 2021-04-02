@@ -1,0 +1,72 @@
+<!DOCTYPE HTML><html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css" />
+
+  <title> MatrizLed - CONFIG </title>
+</head>
+<body>
+
+    <div class="wrapper">
+      <div class="title-text">
+        <div class="title login">
+          Matriz de LED
+        </div>
+        <div class="title signup">
+          Config. Rede
+        </div>
+      </div>
+      <div class="form-container">
+        <div class="slide-controls">
+            <input type="radio" name="slide" id="login" checked>
+            <input type="radio" name="slide" id="signup">
+            <label for="login" class="slide login"> << </label>
+            <label for="signup" class="slide signup"> >> </label>
+            <div class="slider-tab"></div>
+        </div>
+        <div class="form-inner">
+          <form action="/" class="login">
+            <div class="field">
+               <p id="lblFrase">Digite sua frase aqui:</p>
+               <input type="text" name= "edtFrase" id="edtFrase" placeholder="Frase" onkeyup="return perm_char(this)" required>
+            </div>
+            <div class="field">
+              <label> Velocidade do Scroll <span id="spnVel"> 50ms</span></label>
+              <input type="range" class="range" id="cmbVel" name="cmbVel" min="1" max="50">
+            </div>
+            <div class="field">
+              <label> Espacos entre Ciclos <span id="spnEsp"> 2</span></label>
+              <input type="range" class="range" id="cmbEsp" name="cmbEsp" min="0" max="20">
+            </div>
+            <div class="field btn" id="btnLogin">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Salvar" >
+            </div>
+            <div class="signup-link">
+              Tales Cembraneli Dantas - 2021
+            </div>
+          </form>
+          <form action="/" class="signup">
+            <div class="field">
+                <input type="text" name="edtSSID" id="edtSSID" placeholder="Novo Nome da Rede" maxlength="13" minlength="4" onkeyup="return perm_char(this)" required>
+            </div>
+            <div class="field">
+                <input type="password" name="edtNewPass" id="edtNewPass" placeholder="Senha" maxlength="13" minlength="8"required>
+            </div>
+            <div class="field">
+                <input type="password" id="edtNewRepass" placeholder="Repita a Senha" maxlength="13" required>
+            </div>
+            <div class="field btn" id="btnSignup">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Salvar">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  
+    <script type="text/javascript" src="functions.js"></script>
+
+</body>
+</html>
