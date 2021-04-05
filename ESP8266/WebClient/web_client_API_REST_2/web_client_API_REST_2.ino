@@ -4,6 +4,13 @@
 
 HTTPClient http;
 
+const char* cidade;
+const char* date;
+const char* tim;
+//const double temp;
+const char* desc;
+        
+
 void setup() {
   Serial.begin(115200);
 
@@ -19,17 +26,9 @@ void setup() {
   Serial.print("Connected, IP address: ");
   Serial.println(WiFi.localIP());  
 
-}
-
-void loop() {
-
-    if (WiFi.status() == WL_CONNECTED) {
-//      Serial.println("Conected...");
-      HTTPClient http;
- 
       http.begin("http://api.hgbrasil.com/weather?woeid=458878&key=f65a34f9");
       int httpCode = http.GET();
- 
+
       if (httpCode > 0) {
 
         String payload = http.getString();
@@ -39,24 +38,21 @@ void loop() {
         StaticJsonDocument<1500> doc;
 
         char json[len];
-        payload.toCharArray(json,len);
-//        Serial.println(json);
-        
-        
+        payload.toCharArray(json,len);              
         DeserializationError error = deserializeJson(doc, json);
-
         if (error) {
 //          Serial.print(F("deserializeJson() failed: "));
 //          Serial.println(error.f_str());
           return;
         }
+
         
-        const char* cidade = doc["results"]["city_name"];
-        const char* date = doc["results"]["date"];
-        const char* tim = doc["results"]["time"];
+        cidade = doc["results"]["city_name"];
+        date = doc["results"]["date"];
+        tim = doc["results"]["time"];
         const double temp = doc["results"]["temp"];
-        const char* desc = doc["results"]["description"];
-        
+        desc = doc["results"]["description"];
+
         Serial.print("Cidade:");
         Serial.println(cidade);
         Serial.print("Data:");
@@ -68,12 +64,20 @@ void loop() {
         Serial.print("ALERTA:");
         Serial.println(desc);
 
-        
-      }else{
-        Serial.println("site fora do ar!");
       }
- 
+
       http.end();
+
+
+
+}
+
+void loop() {
+
+    if (WiFi.status() == WL_CONNECTED) {
+//      Serial.println("Conected...");
+
+ 
  
     }
  
