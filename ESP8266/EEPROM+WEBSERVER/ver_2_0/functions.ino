@@ -207,7 +207,7 @@ void loadHTML(){
     css = file.readStringUntil('\r');
     file.close();
   
-    file = SPIFFS.open("/functions.js", "r");
+    file = SPIFFS.open("/func.js", "r");
     js = file.readStringUntil('\r');
     file.close();
 
@@ -274,7 +274,7 @@ void roterHTML(){
     server.send(200, "text/css", String(css).c_str());
   });
 
-  server.on("/functions.js", [](){
+  server.on("/func.js", [](){
     server.send(200, "text/html",String(js).c_str());
   });
 

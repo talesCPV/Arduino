@@ -20,38 +20,6 @@
 
     getFrase()
 
-    signupBtn.onclick = (()=>{
-      if(signinText.style.marginLeft == "0%" || signinText.style.marginLeft == ""){
-        signinText.style.marginLeft = "-40%";
-      }else if(signinText.style.marginLeft == "-40%"){
-        signinText.style.marginLeft = "-112%";
-      }else{
-        signinText.style.marginLeft = "-163%";
-      }
-
-      signinForm.style.marginLeft = "-100%";
-
-    });
-    
-    signinBtn.onclick = (()=>{
-
-      if(signinText.style.marginLeft == "-163%"){
-        signinText.style.marginLeft = "-112%";
-        signinForm.style.marginLeft = "-112%";
-      }else if(signinText.style.marginLeft == "-112%"){
-        signinText.style.marginLeft = "-40%";
-        signinForm.style.marginLeft = "-40%";
-      }else{
-        signinText.style.marginLeft = "0%";
-        signinForm.style.marginLeft = "0%";
-      }
-
-      signinForm.style.marginLeft = "0%";
-
-    });
-
-      signinForm.style.marginLeft = signinText.style.marginLeft;
-
     cmbVel.value = 5;
     cmbEsp.value = 2;
 

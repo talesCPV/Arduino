@@ -11,7 +11,7 @@ void setup() {
 
 //  lerBitaBit("/teste.txt");
   
-  lerTexto("/sketch.js");
+//  lerTexto("/sketch.js");
 
 //  novoArq("/arq1.txt","teste");
 
