@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+
+
+
+  <div class="main" >
+
+    <div class="navbar">
+      <a href="#display">Display</a>
+      <a href="#relogio">Config.</a>
+      <a href="#rede">Redes</a>
+    </div>
+
+    <div class="pages">
+  
+      <div class="hide" id="display">
+        
+          <form action="/" class="login">
+            <div class="field">
+               <p id="lblFrase">Digite sua frase aqui:</p>
+               <input type="text" name= "edtFrase" id="edtFrase" placeholder="Frase" onkeyup="return perm_char(this)" required>
+            </div>
+            <div class="field">
+              <p> Velocidade do Scroll <span id="spnVel"> 50ms</span></p>
+              <input type="range" class="range" id="cmbVel" name="cmbVel" min="1" max="50">
+            </div>
+            <div class="field">
+              <p> Espacos entre Ciclos <span id="spnEsp"> 2</span></p>
+              <input type="range" class="range" id="cmbEsp" name="cmbEsp" min="0" max="20">
+            </div>
+            <div class="field btn" id="btnLogin">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Salvar" >
+            </div>
+
+          </form>
+
+
+      </div>
+
+      <div class="hide" id="relogio">
+        
+        <form action="/" class="login">
+          <div class="field">
+             <p>Mostrar</p>
+          </div>
+          <div class="field">
+            <table>
+              <tr>
+                <td><input type="checkbox" id="ckbData" name="ckbData"></td>
+                <td><label for="ckbData"> Data</label></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" id="ckbHora" name="ckbHora"></td>
+                <td><label for="ckbHora"> Hora do dia</label></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" id="ckbTempo" name="ckbTempo"></td>
+                <td><label for="ckbTempo"> Previsão do Tempo</label></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" id="ckbFrase" name="ckbFrase"  checked></td>
+                <td><label for="ckbFrase"> Frase</label></td>
+              </tr>              
+                            
+            </table>
+          </div>
+          <div class="field">
+            <p>Digite a sua Cidade:</p>
+            <input type="text" name= "edtCidade" id="edtCidade" placeholder="Cacapava-SP" onkeyup="return perm_char(this)" value="Cacapava">
+         </div>
+
+          <div class="field btn" id="btnLogin">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Salvar" >
+          </div>
+
+        </form>
+
+
+      </div>
+
+      <div class="hide" id="rede">
+
+          <form action="/">
+            <div class="field">
+              <p>Internet</p>
+           </div>            
+            <div class="field">
+              <select id="cmbSSID"></select>
+               <!--  <input type="text" name="edtSSID" id="edtSSID" placeholder="SSID" maxlength="13" minlength="4" onkeyup="return perm_char(this)"> -->
+            </div>
+            <div class="field">
+                <input type="password" name="edtNetPass" id="edtNetPass" placeholder="Senha" >
+            </div>
+            <div class="field btn" id="btnSignup">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Salvar" id="btnSaveNet">
+            </div>
+          </form>
+          <form action="/"> 
+            <div class="field">
+              <p>Rede</p>
+           </div>            
+            <div class="field">
+                <input type="text" name="edtSSID" id="edtSSID" placeholder="SSID" maxlength="13" minlength="4" onkeyup="return perm_char(this)" required>
+            </div>
+            <div class="field">
+                <input type="password" name="edtNewPass" id="edtNewPass" placeholder="Senha" maxlength="13" minlength="8"required>
+            </div>
+            <div class="field">
+                <input type="password" id="edtNewRepass" placeholder="Repita a Senha" maxlength="13" required>
+            </div>
+            <div class="field btn" id="btnSignup">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Salvar" id="btnSaveNet">
+            </div>            
+          </form>
+
+
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <p>Tales Cembraneli Dantas - 2021</p>
+    </div>
+
+
+  </div>
+
+    <script type="text/javascript" src="func.js"></script>
+
+</body>
+</html>
