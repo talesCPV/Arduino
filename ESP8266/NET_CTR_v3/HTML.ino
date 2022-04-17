@@ -6,6 +6,8 @@ const char rootHTML[] PROGMEM = R"-**-(
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+
     <style>
 
       body{
@@ -19,6 +21,13 @@ const char rootHTML[] PROGMEM = R"-**-(
 
         input[type=text], input[type=password]{
             margin: 10px;
+
+        }
+
+        select{
+          min-width: 160px;
+          margin-left: 30px;
+
         }
 
         label{
@@ -127,7 +136,11 @@ const char rootHTML[] PROGMEM = R"-**-(
 
         .width{
           width : 30px;
-          margin: 0 4px  !important;
+          margin: 0 5px  !important;
+        }
+
+        .door-name{
+          max-width: 150px !important; 
         }
 
     </style>
@@ -146,7 +159,7 @@ const char rootHTML[] PROGMEM = R"-**-(
 
       <fieldset>
         <legend>SSID:</legend>
-        <div class="inline">
+        <div>
           <input type="radio" name="modo" id="server" checked>
           <label for="server">Server</label>
           <input type="radio" name="modo" id="client">
@@ -164,7 +177,7 @@ const char rootHTML[] PROGMEM = R"-**-(
         </label> 
 
         <label class="switch" >
-          <p class="switch_label txt">IP</p>
+          <p class="switch_label txt" style="min-width: 57px">IP</p>
           <input type="text" id="ip_1" class="width" maxlength="3">
           <input type="text" id="ip_2" class="width" maxlength="3">
           <input type="text" id="ip_3" class="width" maxlength="3">
@@ -174,62 +187,70 @@ const char rootHTML[] PROGMEM = R"-**-(
       </fieldset>
        <fieldset>
         <legend>ENABLE DOORS:</legend>
-                    
-              <label class="switch">
-                  <input type="checkbox" id="chk00">
-                  <span class="slider"></span>
-                  <p class="switch_label">Door 01</p>
-                  <input  type="text" placeholder="Name" id="edt00">
-              </label>     
-              
-              <label class="switch">
-                  <input type="checkbox" id="chk01">
-                  <span class="slider"></span>
-                  <p class="switch_label">Door 02</p>
-                  <input  type="text" placeholder="Name" id="edt01">
-              </label>              
-              
-              <label class="switch">
-                <input type="checkbox" id="chk02">
-                <span class="slider"></span>
-                <p class="switch_label">Door 03</p>
-                <input  type="text" placeholder="Name" id="edt02">
-            </label>              
-              
-            <label class="switch">
-              <input type="checkbox" id="chk03">
-              <span class="slider"></span>
-              <p class="switch_label">Door 04</p>
-              <input  type="text" placeholder="Name" id="edt03">
-            </label>              
-              
-            <label class="switch">
-              <input type="checkbox" id="chk04">
-              <span class="slider"></span>
-              <p class="switch_label">Door 05</p>
-              <input  type="text" placeholder="Name" id="edt04">
-            </label>              
-              
-            <label class="switch">
-              <input type="checkbox" id="chk05">
-              <span class="slider"></span>
-              <p class="switch_label">Door 06</p>
-              <input  type="text" placeholder="Name" id="edt05">
-            </label>              
-              
-            <label class="switch">
-              <input type="checkbox" id="chk06">
-              <span class="slider"></span>
-              <p class="switch_label">Door 07</p>
-              <input  type="text" placeholder="Name" id="edt06">
-            </label>              
-              
-            <label class="switch">
-              <input type="checkbox" id="chk07">
-              <span class="slider"></span>
-              <p class="switch_label">Door 08</p>
-              <input  type="text" placeholder="Name" id="edt07">
-            </label>                           
+
+        <label class="switch">
+          <p class="switch_label" style="padding: 7px 0 0 10px;">Key Position</p>
+          <select class="door-name" id="cmbInvert">
+            <option value="0">Normal</option>
+            <option value="1">Invert</option>
+          </select>
+        </label>  
+                  
+        <label class="switch">
+            <input type="checkbox" id="chk00">
+            <span class="slider"></span>
+            <p class="switch_label">Door 01</p>
+            <input class="door-name" type="text" placeholder="Name" id="edt00" maxlength="15">
+        </label>     
+        
+        <label class="switch">
+            <input type="checkbox" id="chk01">
+            <span class="slider"></span>
+            <p class="switch_label">Door 02</p>
+            <input class="door-name" type="text" placeholder="Name" id="edt01" maxlength="15">
+        </label>              
+        
+        <label class="switch">
+          <input type="checkbox" id="chk02">
+          <span class="slider"></span>
+          <p class="switch_label">Door 03</p>
+          <input class="door-name" type="text" placeholder="Name" id="edt02" maxlength="15">
+        </label>              
+          
+        <label class="switch">
+          <input type="checkbox" id="chk03">
+          <span class="slider"></span>
+          <p class="switch_label">Door 04</p>
+          <input class="door-name" type="text" placeholder="Name" id="edt03" maxlength="15">
+        </label>              
+          
+        <label class="switch">
+          <input type="checkbox" id="chk04">
+          <span class="slider"></span>
+          <p class="switch_label">Door 05</p>
+          <input class="door-name" type="text" placeholder="Name" id="edt04" maxlength="15">
+        </label>              
+          
+        <label class="switch">
+          <input type="checkbox" id="chk05">
+          <span class="slider"></span>
+          <p class="switch_label">Door 06</p>
+          <input class="door-name" type="text" placeholder="Name" id="edt05" maxlength="15">
+        </label>              
+          
+        <label class="switch">
+          <input type="checkbox" id="chk06">
+          <span class="slider"></span>
+          <p class="switch_label">Door 07</p>
+          <input class="door-name" type="text" placeholder="Name" id="edt06" maxlength="15">
+        </label>              
+          
+        <label class="switch">
+          <input type="checkbox" id="chk07">
+          <span class="slider"></span>
+          <p class="switch_label">Door 08</p>
+          <input class="door-name" type="text" placeholder="Name" id="edt07" maxlength="15">
+        </label>                           
                         
        </fieldset>
        <button id="btnSave">SAVE CONFIG</button>
@@ -250,7 +271,8 @@ const char rootHTML[] PROGMEM = R"-**-(
       const out =  new Object
         out.ram = '0'
         out.ram += document.querySelector('#server').checked ? '1' : '0'
-        out.ram += '000000'
+        out.ram += document.querySelector('#cmbInvert').value
+        out.ram += '00000'
         out.ssid = document.querySelector('#ssid').value
         out.pass = document.querySelector('#pass').value
         out.name = document.querySelector('#stat_name').value
@@ -310,6 +332,7 @@ const char rootHTML[] PROGMEM = R"-**-(
             document.getElementById('ip_2').value = json.ip[1]
             document.getElementById('ip_3').value = json.ip[2]
             document.getElementById('ip_4').value = json.ip[3]
+            document.getElementById('cmbInvert').value = json.ram[2]
 
             for(let i=0; i<8; i++){
               document.getElementById('chk0'+i).checked = parseInt(json.door_enable[i])
@@ -587,18 +610,18 @@ const char indexHTML[] PROGMEM = R"rawliteral(
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
     <title>Sitio - Controle 2.0</title>
     <style>
-
+  
         *{
             box-sizing: border-box;
         }
 
         body {
             font-size:12px;
-            font-family:sans-serif;
-            background:#b8e3ef;
+            font-family: sans-serif;
+            background:#EBE1B5;
             text-align:center;
         }
 
@@ -606,6 +629,16 @@ const char indexHTML[] PROGMEM = R"rawliteral(
             width: 100%;
             margin: 0;
         }
+
+        fieldset{
+          border-radius: 10px;
+          margin-top: 50px;
+          font-size: x-large;
+          font-weight: 500;
+          color: rgb(56, 55, 55);
+      
+        }
+
 
 /*  MENU  */
 
@@ -673,13 +706,13 @@ const char indexHTML[] PROGMEM = R"rawliteral(
             border-radius: 15px;
             width: 95%;
             height: calc(100vh - 60px);
-            background-color: rgb(22, 21, 21,0.6);
+            background-color: #DBD2AD;
         }
 
         /* Credit */
 
         #credit{
-            color:rgb(139, 131, 131);
+            color:rgb(77, 72, 72);
             text-transform:uppercase;
             position: absolute;
             bottom:10px;
@@ -701,7 +734,7 @@ const char indexHTML[] PROGMEM = R"rawliteral(
         /* SWITCH CHECKBOX */
 
         .switch_label{
-            padding-left: 50px;
+            padding-left: 60px;
             margin-top: 0;
             font-size: xx-large;
             cursor: pointer;
@@ -826,7 +859,6 @@ const char indexHTML[] PROGMEM = R"rawliteral(
             overflow: auto;
             color: #000000;
         }
-
 
     </style>
 </head>
