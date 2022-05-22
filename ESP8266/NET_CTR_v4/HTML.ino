@@ -2,6 +2,7 @@
 
 const char rootHTML[] PROGMEM = R"-**-(
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,7 +27,10 @@ const char rootHTML[] PROGMEM = R"-**-(
         select{
           min-width: 160px;
           margin-left: 30px;
+        }
 
+        textarea{
+          width: 87vw;            
         }
 
         label{
@@ -250,6 +254,9 @@ const char rootHTML[] PROGMEM = R"-**-(
           <p class="switch_label">Door 08</p>
           <input class="door-name" type="text" placeholder="Name" id="edt07" maxlength="15">
         </label>                           
+
+        <p> Twin Doors ex:1,2,5 (each twins for line)</p>
+        <textarea rows="10" id="txtTwins"></textarea>       
                         
        </fieldset>
        <button id="btnSave">SAVE CONFIG</button>
@@ -283,6 +290,7 @@ const char rootHTML[] PROGMEM = R"-**-(
         out.ip.push(parseInt(document.querySelector('#ip_2').value))
         out.ip.push(parseInt(document.querySelector('#ip_3').value))
         out.ip.push(parseInt(document.querySelector('#ip_4').value))        
+        out.twins = document.querySelector('#txtTwins').value
 
         for(let i=0; i<8; i++){
           out.door_enable += document.querySelector('#chk0'+i).checked ? '1' : '0'
@@ -332,6 +340,7 @@ const char rootHTML[] PROGMEM = R"-**-(
             document.getElementById('ip_3').value = json.ip[2]
             document.getElementById('ip_4').value = json.ip[3]
             document.getElementById('cmbInvert').value = json.ram[2]
+            document.getElementById('txtTwins').value = json.twins
 
             for(let i=0; i<8; i++){
               document.getElementById('chk0'+i).checked = parseInt(json.door_enable[i])
@@ -603,6 +612,7 @@ const char clientHTML[] PROGMEM = R"-**-(
 
 
 const char indexHTML[] PROGMEM = R"rawliteral(
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -939,14 +949,14 @@ const char indexHTML[] PROGMEM = R"rawliteral(
               
               let check = ''
               if((parseInt(ram.door_value[i]) && !invert)||(!parseInt(ram.door_value[i]) && invert) ){
-                check = 'checked'                  
+                check = 'checked'
               }
               body += `
                 <label class="switch">
                     <input type="checkbox" id="chk0${i}" ${check}>
                     <span class="slider"></span>
                     <p class="switch_label" id="edt0${i}">${ram.door_name[i]}</p>
-                </label>              
+                </label>
               `
             }
           }
@@ -958,12 +968,29 @@ const char indexHTML[] PROGMEM = R"rawliteral(
           
           for(let i=0; i<checkbox.length; i++){
             checkbox[i].addEventListener('change',()=>{
-              checkValues()
-              postData(ip,JSON.stringify(ram))
+                twins(checkbox[i].id)
+                checkValues()
+                postData(ip,JSON.stringify(ram))
             })
-          }                
+          }
         })
       })
+    }
+
+    function twins(N){ // N = checkbox id
+        const state = document.getElementById(N).checked ? 1 : 0
+        const pin = N.substr(N.length-1,N.length)
+        const twins = ram.twins.split('\n') 
+        for(let i=0; i<twins.length; i++){
+            const line = twins[i].split(',')
+            if(line.includes(pin)){
+                for(let j=0; j<line.length; j++){
+                    if(document.getElementById('chk0'+line[j]) != null){
+                      document.getElementById('chk0'+line[j]).checked = state ? true :  false                    
+                    }
+                }
+            }
+        }
     }
 
 
